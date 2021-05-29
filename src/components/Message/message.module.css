@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    margin-top: 5px;
+}
+
+.message{
+    flex: 1;
+    position: relative;
+}
+
+.time {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    color: rgba(255, 255, 255, .7);
+    font-size: .7rem;
+}
