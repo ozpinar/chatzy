@@ -1,3 +1,11 @@
+::-webkit-scrollbar {
+    width: 10px;
+    background: rgba(52, 140, 116, 0.2);
+}
+::-webkit-scrollbar-thumb {
+    background: #348C74;
+}
+
 .chat {
     display: flex;
     position: absolute;
@@ -23,6 +31,7 @@
 }
 .input {
     flex:1;
+    padding: 0 2rem;
 }
 .input input {
     width: 90%;
@@ -51,7 +60,8 @@
 
 .left {
     background-color: rgba(52, 140, 116, 0.2);;
-    flex: 2
+    flex: 2;
+    min-width: 300px;
 }
 
 .indicator {
@@ -70,6 +80,15 @@
 .header span {
     font-weight: 400;
     font-size: 1.1rem;
+}
+
+.users {
+    display: flex;
+    flex-direction: column;    
+}
+
+.onlines, .offlines {
+    margin-top: -1rem;
 }
 
 @media screen and (max-width: 1500px) {

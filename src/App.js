@@ -3,6 +3,9 @@ import Login from './assets/Login/Login'
 import Register from './assets/Register/Register'
 import Message from './components/Message/Message'
 import Chat from './assets/Chat/Chat'
+import Card from './components/Card/Card'
+import ChatHeader from './components/ChatHeader/ChatHeader'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +20,7 @@ function App() {
         <Switch>
           <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
-          <Route path="/me" exact component={Message}/>
+          <Route path="/test" exact component={ChatHeader}/>
           <Route path="/chat" exact component={Chat}/>
         </Switch>
       </Router>

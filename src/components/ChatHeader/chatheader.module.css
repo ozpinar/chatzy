@@ -1,0 +1,19 @@
+
+.chatHeader {
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.chatHeader span {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-left: 1.5rem;
+}
+
+.chatHeader img {
+    padding: 1rem 1rem;
+    border-radius: 25px;
+    background-color: #D6E8E3;
+}

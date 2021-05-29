@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './message.module.css'
 
-const Message = ( {children = "Hello", type = "recieved", time = "13.52"} ) => {
+const Message = ( {children = "Hello", type = "recieved", time = "13:52"} ) => {
     const customContainer = {
         justifyContent: type === "recieved" ? "flex-start" : "flex-end",
     }
@@ -14,7 +14,7 @@ const Message = ( {children = "Hello", type = "recieved", time = "13.52"} ) => {
         maxWidth: "280px",
         padding: "1rem 2rem",
         paddingRight: "3rem",
-        borderRadius: type === "recieved" ? "0px 40px 40px 40px" : "40px 40px 0px 40px"
+        borderRadius: type === "recieved" ? "5px 40px 40px 40px" : "40px 40px 5px 40px"
     }
 
     return (
