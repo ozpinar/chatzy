@@ -4,16 +4,22 @@ import Message from '../../components/Message/Message'
 import Card from '../../components/Card/Card'
 import GroupCard from '../../components/GroupCard/GroupCard'
 import ChatHeader from '../../components/ChatHeader/ChatHeader'
+import {data} from '../../dummy/users'
+import classnames from 'classnames'
 
 const Chat = () => {
     const [messages, setMessages] = useState()
     const [input, setInput] = useState("")
+    const [users, setUsers] = useState()
+    const [currentChat, setCurrentChat] = useState()
+    const [showChat, setShowChat] = useState(false)
     const scrollRef = useRef()
     const userID = 1
     let id = 1
     
     useEffect(()=>{
         setMessages([]);
+        setUsers(data.users);
     },[])
 
     useEffect(()=>{
@@ -60,7 +66,7 @@ const Chat = () => {
 
     return (
         <div className={styles.chat} >
-            <div className={styles.left}>
+            <div className={showChat ? styles.show : styles.left}>
                 <div className={styles.groups}>
                     <div className={styles.header}>
                         <div className={styles.indicator}></div>
@@ -76,10 +82,24 @@ const Chat = () => {
                         <span>Onlines</span>
                     </div>
                     <div className={styles.users}>
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
+                        {
+                            users?.map(u => (
+                                u.status === 'Online' ?
+                                <div onClick={ () => {
+                                        setCurrentChat(u)
+                                        if (window.innerWidth <= 500) {
+                                            setShowChat(!showChat)
+                                        }
+                                    }}>
+                                    <Card
+                                    id = {u.id}
+                                    name = {u.name}
+                                    status = {u.status}
+                                />
+                                </div>
+                                : null
+                            ))
+                        }
                     </div>
                 </div>
                 <div className={styles.offlines}>
@@ -88,16 +108,35 @@ const Chat = () => {
                         <span>Offlines</span>
                     </div>
                     <div className={styles.users}>
-                        <Card status="Offline" ></Card>
-                        <Card status="Offline"></Card>
-                        <Card status="Offline" ></Card>
-                        <Card status="Offline"></Card>
+                    {
+                            users?.map(u => (
+                                u.status === 'Offline' ? 
+                                <Card
+                                    id = {u.id}
+                                    name = {u.name}
+                                    status = {u.status}
+                                />
+                                : null
+                            ))
+                        }
                     </div>
                 </div>
             </div>
-            <div className={styles.right}>
+            <div className={showChat ? styles.hide : styles.right}>
+                <div
+                    className={styles.hamburger}
+                    onClick= {() => {
+                        setShowChat(!showChat)
+                    }}
+                    >
+                    <div className={styles.hamburgerEl}></div>
+                    <div className={styles.hamburgerEl}></div>
+                    <div className={styles.hamburgerEl}></div>
+                </div>
                 <div className={styles.chatHeader}>
-                    <ChatHeader></ChatHeader>
+                    <ChatHeader
+                        name = {currentChat?.name}
+                    />
                 </div>
                 <div className={styles.messages}>
                     {messages?.map((m)=> ( 

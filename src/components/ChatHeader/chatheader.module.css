@@ -18,3 +18,13 @@
     border-radius: 25px;
     background-color: #D6E8E3;
 }
+
+
+@media screen and (max-width: 500px) {
+    .chatHeader {
+        justify-content: flex-end;
+    }
+    .chatHeader img {
+        order: 2;
+    }   
+}

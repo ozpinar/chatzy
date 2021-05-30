@@ -60,7 +60,7 @@
 }
 
 .left {
-    background-color: rgba(52, 140, 116, 0.2);;
+    background-color: rgba(52, 140, 116, 0.2);
     flex: 2;
     min-width: 300px;
     overflow-y: scroll;
@@ -98,9 +98,52 @@
     margin-top: -1rem;
 }
 
+.hamburger {
+    display: none;
+}
+
 @media screen and (max-width: 1500px) {
     .chat {
         width: 100vw;
         height: 100vh;
     }
   }
+
+
+@media screen and (max-width: 500px) {
+
+    .left{
+        display: none;
+    }
+    .input {
+        padding: .5rem 1rem;
+    }
+    .hamburger {
+        display: block;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 10%;
+        top: 5%;
+    }
+    .hamburgerEl {
+        background-color: #348C74;
+        width: 20px;
+        height: 3px;
+        
+    }
+
+    .hamburgerEl:not(:first-child) {
+        margin-top: 3px;
+    }
+
+    .show{
+        background:rgba(52, 140, 116, 0.2);
+        display: block;
+        width: 100vw;
+    }
+    .hide{
+        display: none;
+    }
+
+ }
+
