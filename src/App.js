@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
-          <Route path="/test" exact component={ChatHeader}/>
+          <Route path="/test" exact component={Message}/>
           <Route path="/chat" exact component={Chat}/>
         </Switch>
       </Router>

@@ -14,6 +14,7 @@ const Message = ( {children = "Hello", type = "recieved", time = "13:52"} ) => {
         maxWidth: "280px",
         padding: "1rem 2rem",
         paddingRight: "3rem",
+        wordWrap: 'break-word',
         borderRadius: type === "recieved" ? "5px 40px 40px 40px" : "40px 40px 5px 40px"
     }
 

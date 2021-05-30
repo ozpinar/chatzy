@@ -1,10 +1,60 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './chat.module.css'
 import Message from '../../components/Message/Message'
 import Card from '../../components/Card/Card'
 import ChatHeader from '../../components/ChatHeader/ChatHeader'
+import {data} from '../../dummy/messages'
 
 const Chat = () => {
+    const [messages, setMessages] = useState()
+    const [input, setInput] = useState("")
+    const scrollRef = useRef()
+    const userID = 1
+    
+    useEffect(()=>{
+        setMessages([]);
+    },[])
+
+    useEffect(()=>{
+        scrollRef.current?.scrollIntoView( {behavior: "smooth"} )
+    },[messages])
+
+    const time = new Date();
+    function addZero(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+    }   
+    const hm = `${addZero(time.getHours())}:${addZero(time.getMinutes())}`
+
+    const sendMessage = () => {
+        if(!input) return
+        setMessages(prevMessages => [...prevMessages, {
+            id: 343,
+            text: input,
+            senderID: 1,
+            recieverID: 2,
+            time: hm
+        }])
+
+        setInput("")
+    }
+
+    const sendMessageKeyPress = (e) => {
+        if (e.key === 'Enter' && input) {
+            setMessages(prevMessages => [...prevMessages, {
+                id: 343,
+                text: input,
+                senderID: 1,
+                recieverID: 2,
+                time: hm
+            }])
+    
+            setInput("")
+        }
+    }
+
     return (
         <div className={styles.chat} >
             <div className={styles.left}>
@@ -41,34 +91,20 @@ const Chat = () => {
                     <ChatHeader></ChatHeader>
                 </div>
                 <div className={styles.messages}>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="recieved"></Message>
-                    <Message type="recieved"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="sent"></Message>
-                    <Message type="recieved"></Message>
-                    <Message type="recieved"></Message>
-                    <Message type="recieved"></Message>
-                    <Message type="recieved"></Message>
-                    <Message type="recieved"></Message>
-                    <Message type="recieved"></Message>
+                    {messages?.map((m)=> ( 
+                        <div ref={scrollRef}>
+                             <Message
+                            type={m.senderID === userID ? "sent" : "recieved"}
+                            time={m.time}
+                            >
+                            {m.text}
+                            </Message>
+                        </div>
+                    ))}
                 </div>
                 <div className={styles.input}>
-                    <input type="text"/>
-                    <button>Send</button>
+                    <input onKeyPress={sendMessageKeyPress} placeholder="Type something to send message..." type="text" value={input} onChange={e => setInput(e.target.value)}/>
+                    <button onClick={sendMessage}>Send</button>
                 </div>
             </div>
         </div>
