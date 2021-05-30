@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './chat.module.css'
 import Message from '../../components/Message/Message'
 import Card from '../../components/Card/Card'
 import GroupCard from '../../components/GroupCard/GroupCard'
 import ChatHeader from '../../components/ChatHeader/ChatHeader'
-import {data} from '../../dummy/users'
+import { data } from '../../dummy/users'
 import Send from '../../images/send.svg'
 
 const Chat = () => {
@@ -14,6 +15,7 @@ const Chat = () => {
     const [currentChat, setCurrentChat] = useState()
     const [showChat, setShowChat] = useState(false)
     const scrollRef = useRef()
+    const userType = "admin"
     const userID = 1
     let id = 1
     
@@ -87,7 +89,7 @@ const Chat = () => {
                                 u.status === 'Online' ?
                                 <div onClick={ () => {
                                         setCurrentChat(u)
-                                        if (window.innerWidth <= 500) {
+                                        if (window.innerWidth <= 700) {
                                             setShowChat(!showChat)
                                         }
                                     }}>
@@ -114,7 +116,7 @@ const Chat = () => {
                                 u.status === 'Offline' ?
                                 <div onClick={ () => {
                                     setCurrentChat(u)
-                                    if (window.innerWidth <= 500) {
+                                    if (window.innerWidth <= 700) {
                                         setShowChat(!showChat)
                                     }
                                 }}> 
@@ -143,6 +145,10 @@ const Chat = () => {
                     <div className={styles.hamburgerEl}></div>
                 </div>
                 <div className={styles.chatHeader}>
+                    {userType === 'admin' ?
+                    <Link className={styles.logslink} to="/logs"><button className={styles.logs}> See Logs </button></Link>
+                    : null
+                    }
                     {
                     currentChat ?
                     <ChatHeader

@@ -1,6 +1,7 @@
 import './App.css';
 import Login from './assets/Login/Login'
 import Register from './assets/Register/Register'
+import Logs from './assets/Logs/Logs'
 import Message from './components/Message/Message'
 import Chat from './assets/Chat/Chat'
 import Card from './components/Card/Card'
@@ -23,6 +24,7 @@ function App() {
           <Route path="/register" exact component={Register}/>
           <Route path="/test" exact component={GroupCard}/>
           <Route path="/chat" exact component={Chat}/>
+          <Route path="/logs" exact component={Logs}/>
         </Switch>
       </Router>
     </div>
