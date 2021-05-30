@@ -5,9 +5,9 @@
     align-items: center;
 }
 
+
 .card {
     width: 90%;
-    background-color: #CEE4DE;
     display: flex;
     align-items: center;
     justify-content: space-around;

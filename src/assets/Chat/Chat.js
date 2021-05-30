@@ -5,7 +5,7 @@ import Card from '../../components/Card/Card'
 import GroupCard from '../../components/GroupCard/GroupCard'
 import ChatHeader from '../../components/ChatHeader/ChatHeader'
 import {data} from '../../dummy/users'
-import classnames from 'classnames'
+import Send from '../../images/send.svg'
 
 const Chat = () => {
     const [messages, setMessages] = useState()
@@ -95,6 +95,7 @@ const Chat = () => {
                                     id = {u.id}
                                     name = {u.name}
                                     status = {u.status}
+                                    current = {currentChat === u ? true : false}
                                 />
                                 </div>
                                 : null
@@ -110,12 +111,20 @@ const Chat = () => {
                     <div className={styles.users}>
                     {
                             users?.map(u => (
-                                u.status === 'Offline' ? 
+                                u.status === 'Offline' ?
+                                <div onClick={ () => {
+                                    setCurrentChat(u)
+                                    if (window.innerWidth <= 500) {
+                                        setShowChat(!showChat)
+                                    }
+                                }}> 
                                 <Card
                                     id = {u.id}
                                     name = {u.name}
                                     status = {u.status}
+                                    current = {currentChat === u ? true : false}
                                 />
+                                </div>
                                 : null
                             ))
                         }
@@ -134,12 +143,17 @@ const Chat = () => {
                     <div className={styles.hamburgerEl}></div>
                 </div>
                 <div className={styles.chatHeader}>
+                    {
+                    currentChat ?
                     <ChatHeader
                         name = {currentChat?.name}
                     />
+                    :
+                    null
+                    }
                 </div>
                 <div className={styles.messages}>
-                    {messages?.map((m)=> ( 
+                    {currentChat ? messages?.map((m)=> ( 
                         <div ref={scrollRef}>
                              <Message
                             type={m.senderID === userID ? "sent" : "recieved"}
@@ -148,12 +162,19 @@ const Chat = () => {
                             {m.text}
                             </Message>
                         </div>
-                    ))}
+                    ))
+                    :
+                    <h3 className={styles.noChat} >Select someone from left to start chatting.</h3>
+                }
                 </div>
+                {
+                currentChat ?
                 <div className={styles.input}>
                     <input onKeyPress={sendMessageKeyPress} placeholder="Type something to send message..." type="text" value={input} onChange={e => setInput(e.target.value)}/>
-                    <button onClick={sendMessage}>Send</button>
+                    <button onClick={sendMessage}><img src={Send}/></button>
                 </div>
+                : null
+                }
             </div>
         </div>
     )
