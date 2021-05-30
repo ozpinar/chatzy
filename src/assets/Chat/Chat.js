@@ -2,14 +2,15 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from './chat.module.css'
 import Message from '../../components/Message/Message'
 import Card from '../../components/Card/Card'
+import GroupCard from '../../components/GroupCard/GroupCard'
 import ChatHeader from '../../components/ChatHeader/ChatHeader'
-import {data} from '../../dummy/messages'
 
 const Chat = () => {
     const [messages, setMessages] = useState()
     const [input, setInput] = useState("")
     const scrollRef = useRef()
     const userID = 1
+    let id = 1
     
     useEffect(()=>{
         setMessages([]);
@@ -30,8 +31,9 @@ const Chat = () => {
 
     const sendMessage = () => {
         if(!input) return
+        id++
         setMessages(prevMessages => [...prevMessages, {
-            id: 343,
+            id,
             text: input,
             senderID: 1,
             recieverID: 2,
@@ -43,8 +45,9 @@ const Chat = () => {
 
     const sendMessageKeyPress = (e) => {
         if (e.key === 'Enter' && input) {
+            id++
             setMessages(prevMessages => [...prevMessages, {
-                id: 343,
+                id,
                 text: input,
                 senderID: 1,
                 recieverID: 2,
@@ -63,7 +66,9 @@ const Chat = () => {
                         <div className={styles.indicator}></div>
                         <span>Groups</span>
                     </div>
-                    
+                    <div className={styles.users}>
+                        <GroupCard></GroupCard>
+                    </div>           
                 </div>
                 <div className={styles.onlines}>
                     <div className={styles.header}>
@@ -71,6 +76,8 @@ const Chat = () => {
                         <span>Onlines</span>
                     </div>
                     <div className={styles.users}>
+                        <Card></Card>
+                        <Card></Card>
                         <Card></Card>
                         <Card></Card>
                     </div>
@@ -81,6 +88,8 @@ const Chat = () => {
                         <span>Offlines</span>
                     </div>
                     <div className={styles.users}>
+                        <Card status="Offline" ></Card>
+                        <Card status="Offline"></Card>
                         <Card status="Offline" ></Card>
                         <Card status="Offline"></Card>
                     </div>

@@ -1,0 +1,40 @@
+.cardContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    width: 90%;
+    background-color: #CEE4DE;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: .7rem;
+    border: 2px solid #348C74;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px 1px rgba(12, 29, 21, 0.25);
+    margin-bottom: 1rem;
+}
+
+.top{
+    display: flex;
+    align-items: center;
+}
+
+.info span {
+    font-weight: 700;
+    margin-left: 1rem;
+}
+
+.photo {
+    padding: .7rem 1rem;
+    border-radius: 25px;
+    background-color: white;
+}
