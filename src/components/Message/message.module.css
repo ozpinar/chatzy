@@ -1,10 +1,15 @@
 .container{
+    position: relative;
     display: flex;
     margin-top: 5px;
 }
 
 .message{
     position: relative;
+}
+
+.name {
+    font-weight: 500;
 }
 
 .time {

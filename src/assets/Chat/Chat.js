@@ -6,27 +6,34 @@ import Card from '../../components/Card/Card'
 import GroupCard from '../../components/GroupCard/GroupCard'
 import ChatHeader from '../../components/ChatHeader/ChatHeader'
 import { data } from '../../dummy/users'
+import { data2 } from '../../dummy/messages'
 import Send from '../../images/send.svg'
 
 const Chat = () => {
-    const [messages, setMessages] = useState()
-    const [input, setInput] = useState("")
-    const [users, setUsers] = useState()
-    const [currentChat, setCurrentChat] = useState()
-    const [showChat, setShowChat] = useState(false)
-    const scrollRef = useRef()
+    const [messages, setMessages] = useState([]) //Messages in chat screen
+    const [input, setInput] = useState("") //Message input
+    const [users, setUsers] = useState() //Users on the left frame
+    const [currentChat, setCurrentChat] = useState() //Current chat indicator
+    const [showChat, setShowChat] = useState(false) //For responsiveness
+    const scrollRef = useRef() //To scroll chat screen after sending message
+
+    //Remove after auth
     const userType = "admin"
     const userID = 1
     let id = 1
+    //
     
     useEffect(()=>{
-        setMessages([]);
+        //Scroll to bottom
+        scrollRef.current?.scrollIntoView( {behavior: "smooth"} )
+    },[messages, currentChat])
+
+    useEffect(()=>{
+        setMessages(data2.messages);
+        //Dummy data
         setUsers(data.users);
     },[])
 
-    useEffect(()=>{
-        scrollRef.current?.scrollIntoView( {behavior: "smooth"} )
-    },[messages])
 
     const time = new Date();
     function addZero(i) {
@@ -162,10 +169,11 @@ const Chat = () => {
                     {currentChat ? messages?.map((m)=> ( 
                         <div ref={scrollRef}>
                              <Message
-                            type={m.senderID === userID ? "sent" : "recieved"}
-                            time={m.time}
+                                type={m.senderID === userID ? "sent" : "recieved"}
+                                time={m.time}
+                                name={m.name}
                             >
-                            {m.text}
+                                {m.text}
                             </Message>
                         </div>
                     ))

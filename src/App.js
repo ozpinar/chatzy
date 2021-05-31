@@ -17,7 +17,8 @@ import {
 } from "react-router-dom";
 
 function App() {
-
+  
+  //Remove after auth function.
   const auth = true
 
   return (
