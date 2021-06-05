@@ -23,12 +23,47 @@
     flex: 8;
 }
 
+.userInformation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: white;
+    border: 1px solid #348C74;
+}
+
+.userInformation button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #348C74;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.userInformation p {
+    font-weight: 700;
+}
+
 .noChat {
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 5rem;
+    opacity: .3;
+    margin-left: 3rem;
+}
+
+.noMsg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1.2rem;
     opacity: .3;
     margin-left: 3rem;
 }
@@ -173,6 +208,12 @@
         background:rgba(52, 140, 116, 0.2);
         display: block;
         width: 100vw;
+        min-height: 100vh;
+        overflow-y: scroll;
+    }
+
+    .show::-webkit-scrollbar{
+        width: 0;
     }
     .hide{
         display: none;

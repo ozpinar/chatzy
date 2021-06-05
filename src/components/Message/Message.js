@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './message.module.css'
 
-const Message = ( {children = "Hello", type = "recieved", time = "13:52", name} ) => {
+const Message = ( {children = "Hello", type = "sent", time = "13:52", name} ) => {
     const customContainer = {
         justifyContent: type === "recieved" ? "flex-start" : "flex-end",
     }

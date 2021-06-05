@@ -10,6 +10,13 @@
    flex: 1;
    min-height: 100vh;
 }
+
+.logo {
+   position: absolute;
+   left: 0;
+   top: 1rem;
+}
+
 .right {
    display: flex;
    background-color: rgba(52, 140, 116, 0.2);
@@ -23,6 +30,9 @@
 }
 
 .form {
+   min-height: 100%;
+   overflow: hidden;
+   position: relative;
    min-width: 40%;
    text-align: left;
    display: flex;
@@ -61,6 +71,10 @@
    margin-bottom: .7rem;
 }
 
+.inputs input:focus {
+   border: 2px solid #348C74;
+}
+
 .inputs button {
    width: 160px;
    height: 2rem;
@@ -75,11 +89,43 @@
    margin-top: 1rem;
 }
 
+.message{
+   text-align: center;
+   padding: 1rem;
+   margin-top: 1rem;
+   background-color: rgba(52, 140, 116, 0.2);
+   border-radius: 5px;
+}
+
+.error {
+   text-align: center;
+   padding: 1rem;
+   margin-top: 1rem;
+   background-color: rgba(218, 27, 27, 0.2);
+   border-radius: 5px;
+}
+
+.hide {
+   display: none;
+}
+
 @media screen and (max-width: 1024px) {
    .right {
       display: none;
    }
    .left {
       min-width: 80vw;
+   }
+ }
+
+ @media screen and (max-width: 600px) {
+   .left {
+      padding: 1rem;
+   }
+   .logo {
+      position: absolute;
+      left: 50%;
+      top: 5rem;
+      transform: translate(-50%,-50%);
    }
  }
