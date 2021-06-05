@@ -14,7 +14,7 @@ The app supports one to one and group conversations, the users are able to see w
 
         E-mail: leonardo@gmail.com
 		
-	Password: 123456
+		Password: 123456
 
 ![](https://i.imgur.com/Usabk4L.png)
 ![](https://i.imgur.com/iq1a3dU.png)
