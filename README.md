@@ -8,13 +8,13 @@ The app supports one to one and group conversations, the users are able to see w
 
 ## For testing, some user credentials
 
-        E-mail: omar@gmail.com
+	E-mail: omar@gmail.com
 
-        Password: 123456
+	Password: 123456
 
-        E-mail: leonardo@gmail.com
+	E-mail: leonardo@gmail.com
 		
-		Password: 123456
+	Password: 123456
 
 ![](https://i.imgur.com/Usabk4L.png)
 ![](https://i.imgur.com/iq1a3dU.png)
