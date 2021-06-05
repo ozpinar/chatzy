@@ -23,7 +23,7 @@ function App() {
           <Route path="/" exact component={user ? Chat : Login}/>
           <Route path="/register" exact component={Register}/>
           <ProtectedRoute path="/chat" exact component={Chat}/>
-          <Route path="/logs" exact component={Logs}/>
+          <ProtectedLogs path="/logs" exact component={Logs}/>
         </Switch>
       </Router>
     </div>
